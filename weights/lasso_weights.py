@@ -46,9 +46,9 @@ print(np.transpose(np.array(y_train)))
 
 print("Model:")
 print(model_predict)
-#df1=pd.DataFrame(y_train)
-#df2=pd.DataFrame(np.array(model_train))
-#
-#df1.to_csv('lasso_out_'+score+'_optimized.csv')
-#df2.to_csv('lasso_out_'+score+'_optimized.csv',mode='a')
+df1=pd.DataFrame((np.array(y_train)))
+df2=pd.DataFrame(np.transpose(np.array(model_predict)))
+
+df1.to_csv('lasso_model_vs_endpoint.csv')
+df2.to_csv('lasso_model_vs_endpoint.csv',mode='a')
 
