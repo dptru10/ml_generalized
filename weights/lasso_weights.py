@@ -35,7 +35,20 @@ alpha=0.1
 print(alpha)
 lasso=Lasso(alpha=alpha,normalize=True)
 lasso.fit(X_train,y_train)
+model_predict=lasso.predict(X_train)
 print('####lasso coeff####')
 print('Model weights:')
 print(lasso.coef_)
+
+
+print("Endpoint:")
+print(np.transpose(np.array(y_train)))
+
+print("Model:")
+print(model_predict)
+#df1=pd.DataFrame(y_train)
+#df2=pd.DataFrame(np.array(model_train))
+#
+#df1.to_csv('lasso_out_'+score+'_optimized.csv')
+#df2.to_csv('lasso_out_'+score+'_optimized.csv',mode='a')
 
