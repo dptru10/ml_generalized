@@ -1,6 +1,8 @@
 #!/usr/bin/env python 
 from __future__ import print_function
 
+import matplotlib 
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np  
 from sklearn import datasets
