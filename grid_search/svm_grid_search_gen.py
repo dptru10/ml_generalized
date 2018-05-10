@@ -64,13 +64,16 @@ for score in scores:
     mse_score_test=mean_squared_error(y_test,model_test)
     rmse_score_test=np.sqrt(mse_score_test)
 
-    print('dft train ratio')
-    #df1=pd.DataFrame(y_train)
-    #df2=pd.DataFrame(model_train)
-    #df3=pd.DataFrame(label)
-
-    df1.to_csv('svr_out_'+score+'_optimized.csv')
-    df2.to_csv('svr_out_'+score+'_optimized.csv',mode='a')
+    print("Endpoint:")
+    print(np.transpose(np.array(y_train)))
+    
+    print("Model:")
+    print(model_train)
+    df1=pd.DataFrame((np.array(y_train)))
+    df2=pd.DataFrame(np.transpose(np.array(model_train)))
+    
+    df1.to_csv('svr_model_vs_endpoint.csv')
+    df2.to_csv('svr_model_vs_endpoint.csv',mode='a')
 
     #plot figures
     plt.figure() 
