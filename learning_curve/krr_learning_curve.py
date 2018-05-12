@@ -79,7 +79,7 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
              label="Cross-validation score")
 
     plt.legend(loc="best")
-    plt.savefig('learning_curve_svm_'+kernel+'.png')
+    plt.savefig('learning_curve_krr_'+kernel+'.png')
 
     print("average difference between curves %.3f") %np.mean(np.sqrt(np.abs((-train_scores_mean)-(-test_scores_mean)))) 
     return plt 
@@ -100,7 +100,7 @@ title = 'SVM, '+kernel+' kernel, '+parameters
 title_difference = 'Difference Learning Curves (SVM, '+kernel+' kernel)'
 # SVC is more expensive so we do a lower number of CV iterations:
 cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
-estimator = KernelRidge(kernel='linear',coef0=0.1,gamma=1000,degree=5)
+estimator = KernelRidge(kernel='linear',coef0=1,gamma=0.0001,degree=2)
 plot_learning_curve(estimator, title, X, Y, cv=cv, n_jobs=-1)
 
 plt.show()
