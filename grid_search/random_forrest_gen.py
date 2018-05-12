@@ -84,8 +84,8 @@ for score in scores:
     df1=pd.DataFrame((np.array(y_train)))
     df2=pd.DataFrame(np.transpose(np.array(model_predict)))
     
-    df1.to_csv('lasso_model_vs_endpoint.csv')
-    df2.to_csv('lasso_model_vs_endpoint.csv',mode='a')
+    df1.to_csv('rf_model_vs_endpoint.csv')
+    df2.to_csv('rf_model_vs_endpoint.csv',mode='a')
 
     
     #plot figures

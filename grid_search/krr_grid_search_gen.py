@@ -69,8 +69,8 @@ for score in scores:
     df1=pd.DataFrame((np.array(y_train)))
     df2=pd.DataFrame(np.transpose(np.array(model_train)))
     
-    df1.to_csv('lasso_model_vs_endpoint.csv')
-    df2.to_csv('lasso_model_vs_endpoint.csv',mode='a')
+    df1.to_csv('krr_model_vs_endpoint.csv')
+    df2.to_csv('krr_model_vs_endpoint.csv',mode='a')
 
     #plot figures
     plt.figure() 
@@ -83,4 +83,4 @@ for score in scores:
     #plt.axis([0,1.5,0,1.5])
     plt.xlabel('True')
     plt.ylabel('Model')
-    plt.savefig('lasso_train_test_'+score+'_optimized.png')
+    plt.savefig('krr_train_test_'+score+'_optimized.png')
