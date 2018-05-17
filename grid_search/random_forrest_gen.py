@@ -24,8 +24,8 @@ X=data_x
 Y=data_y
 
 # make training and test set
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2,random_state=0)
-tuned_parameters = [{'n_estimators':[1,2,3,4]}]
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2,random_state=1)
+tuned_parameters = [{'n_estimators':[1,2,3,4,10,20,30,40,50,60,70,80,90]}]
 scores = ['neg_mean_absolute_error']
 
 #forest = ExtraTreesRegressor(n_estimators=5,random_state=1)
@@ -55,7 +55,7 @@ scores = ['neg_mean_absolute_error']
 
 
 for score in scores:
-    forest = GridSearchCV(ExtraTreesRegressor(),tuned_parameters,verbose=10,cv=4,n_jobs=4,scoring='%s' %score)
+    forest = GridSearchCV(ExtraTreesRegressor(random_state=1),tuned_parameters,verbose=10,cv=4,n_jobs=4,scoring='%s' %score)
     
     forest.fit(X_train, y_train)
     model=forest.fit(X_train,y_train) 
@@ -80,9 +80,9 @@ for score in scores:
     print(np.transpose(np.array(y_train)))
     
     print("Model:")
-    print(model_predict)
+    print(model_train)
     df1=pd.DataFrame((np.array(y_train)))
-    df2=pd.DataFrame(np.transpose(np.array(model_predict)))
+    df2=pd.DataFrame(np.transpose(np.array(model_train)))
     
     df1.to_csv('rf_model_vs_endpoint.csv')
     df2.to_csv('rf_model_vs_endpoint.csv',mode='a')
