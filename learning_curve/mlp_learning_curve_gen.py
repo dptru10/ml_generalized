@@ -2,6 +2,8 @@
 print(__doc__)
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from sklearn.neural_network import MLPRegressor
 from sklearn.datasets import load_digits

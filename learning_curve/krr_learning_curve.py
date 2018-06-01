@@ -2,6 +2,8 @@
 print(__doc__)
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from sklearn.naive_bayes import GaussianNB
 from sklearn.kernel_ridge import KernelRidge
@@ -98,7 +100,7 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
              label="Cross-validation score")
 
     plt.legend(loc="best")
-    plt.savefig('learning_curve_krr_'+kernel+'.png')
+    plt.savefig('learning_curve_krr'+'.png')
 
     print("average difference between curves %.3f") %np.mean(np.sqrt(np.abs((-train_scores_mean)-(-test_scores_mean)))) 
     return plt 

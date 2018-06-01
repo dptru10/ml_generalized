@@ -2,6 +2,8 @@
 print(__doc__)
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from sklearn.linear_model import Lasso 
 from sklearn.model_selection import learning_curve
