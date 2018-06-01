@@ -12,7 +12,7 @@ import argparse
 
 
 def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
-                        n_jobs=1, train_sizes=np.linspace(.1, 1.0, 5)):
+                        n_jobs=1, train_sizes=np.linspace(.1, 1.0, 90)):
     """
     Generate a simple plot of the test and training learning curve.
 
@@ -72,6 +72,24 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
     #                 color="r")
     #plt.fill_between(train_sizes, test_scores_mean - test_scores_std,
     #                 test_scores_mean + test_scores_std, alpha=0.1, color="g")
+    print("Training Set Size:")
+    print(np.transpose(np.array(train_sizes)))
+    
+    print("RMSE Training Error:")
+    print(np.sqrt(-train_scores_mean))
+
+    print("Validation Error:")
+    print(np.sqrt(-test_scores_mean))
+
+
+    df1=pd.DataFrame(np.array(train_sizes))
+    df2=pd.DataFrame(np.sqrt(-train_scores_mean))
+    df3=pd.DataFrame(np.sqrt(-test_scores_mean))  
+
+    df1.to_csv('lasso_learning_curve.csv')
+    df2.to_csv('lasso_learning_curve.csv',mode='a')
+    df3.to_csv('lasso_learning_curve.csv',mode='a')
+
     plt.plot(train_sizes, np.sqrt(-train_scores_mean), 'o-', color="r",
              label="Training score")
     plt.plot(train_sizes, np.sqrt(-test_scores_mean), 'o-', color="g",
@@ -98,7 +116,8 @@ title = "Learning Curves (Lasso $alpha=0.01$)"
 title_difference = 'Difference Learning Curves (Lasso $alpha=0.01$)'
 # SVC is more expensive so we do a lower number of CV iterations:
 cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
-estimator = Lasso(alpha=0.01) 
+print(cv)
+estimator = Lasso(normalize='True',alpha=0.01) 
 plot_learning_curve(estimator, title, X, Y, cv=cv, n_jobs=4)
 
 plt.show()
