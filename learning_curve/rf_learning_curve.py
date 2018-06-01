@@ -73,6 +73,23 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
     #                 color="r")
     #plt.fill_between(train_sizes, test_scores_mean - test_scores_std,
     #                 test_scores_mean + test_scores_std, alpha=0.1, color="g")
+
+    print("Training Set Size:")
+    print(np.transpose(np.array(train_sizes)))
+    
+    print("RMSE Training Error:")
+    print(np.sqrt(-train_scores_mean))
+
+    print("Validation Error:")
+    print(np.sqrt(-test_scores_mean))
+
+    df1=pd.DataFrame(np.array(train_sizes))
+    df2=pd.DataFrame(np.sqrt(-train_scores_mean))
+    df3=pd.DataFrame(np.sqrt(-test_scores_mean))  
+
+    df1.to_csv('rf_learning_curve.csv')
+    df2.to_csv('rf_learning_curve.csv',mode='a')
+    df3.to_csv('rf_learning_curve.csv',mode='a')
     plt.plot(train_sizes, np.sqrt(-train_scores_mean), 'o-', color="r",
              label="Training score")
     plt.plot(train_sizes, np.sqrt(-test_scores_mean), 'o-', color="g",
