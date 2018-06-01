@@ -13,7 +13,7 @@ import argparse
 
 
 def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
-                        n_jobs=-1, train_sizes=np.linspace(.1, 1.0, 13)):
+                        n_jobs=-1, train_sizes=np.linspace(.1, 1.0, 90)):
     """
     Generate a simple plot of the test and training learning curve.
 
@@ -114,13 +114,12 @@ data_y=pd.read_csv(args.file2)
 X=data_x
 Y=data_y
 
-parameters='C=1, epsilon=0.0001, gamma=1000, deg=5'
-title = 'SVM, '+kernel+' kernel, '+parameters
-title_difference = 'Difference Learning Curves (SVM, '+kernel+' kernel)'
+parameters='alpha: 1000.0, coef0: 1, gamma: 0.0001, degree: 2, kernel: sigmoid'
+title = 'KRR Learning Curve'+parameters
 # SVC is more expensive so we do a lower number of CV iterations:
 cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
-estimator = KernelRidge(kernel='linear',coef0=1,gamma=0.0001,degree=2)
-plot_learning_curve(estimator, title, X, Y, cv=cv, n_jobs=-1)
+estimator = KernelRidge(alpha=1000,coef0=1,gamma=0.001,degree=2,kernel='sigmoid')
+plot_learning_curve(estimator, title, X, Y, cv=cv, n_jobs=4)
 
 plt.show()
 
