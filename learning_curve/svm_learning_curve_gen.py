@@ -89,9 +89,9 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
     df2=pd.DataFrame(np.sqrt(-train_scores_mean))
     df3=pd.DataFrame(np.sqrt(-test_scores_mean))  
 
-    df1.to_csv('lasso_learning_curve.csv')
-    df2.to_csv('lasso_learning_curve.csv',mode='a')
-    df3.to_csv('lasso_learning_curve.csv',mode='a')
+    df1.to_csv('svm_learning_curve.csv')
+    df2.to_csv('svm_learning_curve.csv',mode='a')
+    df3.to_csv('svm_learning_curve.csv',mode='a')
     plt.plot(train_sizes, np.sqrt(-train_scores_mean), 'o-', color="r",
              label="Training score")
     plt.plot(train_sizes, np.sqrt(-test_scores_mean), 'o-', color="g",
