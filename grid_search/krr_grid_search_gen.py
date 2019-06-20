@@ -70,13 +70,17 @@ for score in scores:
 
     df1=pd.DataFrame()
     df2=pd.DataFrame()
+    df3=pd.DataFrame()
+    df4=pd.DataFrame()
 	
-    #df1['model_test']=pd.Series(model_test)
-    #df1['true_test'] =pd.Series(y_test)
     df1['model_train']=pd.Series(model_train)
     df2['true_train'] =pd.Series(y_train)
-    df1.to_csv('krr_model.csv',mode='w')
-    df2.to_csv('krr_model_endpoint.csv',mode='w')
+    df3['model_test']=pd.Series(model_test)
+    df4['true_test'] =pd.Series(y_test)
+    df1.to_csv('krr_model_train.csv',mode='w')
+    df2.to_csv('krr_train_set.csv',mode='w')
+    df3.to_csv('krr_model_test.csv',mode='w')
+    df4.to_csv('krr_test_set.csv',mode='w')
     print('Train:\nR2:%.3f \nMSE:%.3f\nRMSE:%.3f\nTest:\nR2:%.3f\nMSE:%.3f\nRMSE:%.3f' %(r2_score_train,mse_score_train,rmse_score_train,r2_score_test,mse_score_test,rmse_score_test))
 
     #plot figures
